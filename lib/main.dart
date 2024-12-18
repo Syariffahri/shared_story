@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_story/presentation/screens/home_screen.dart';
+import 'package:shared_story/core/themes/app_theme.dart';
+import 'package:shared_story/presentation/routes/app_routes.dart';
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
@@ -11,9 +12,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      theme: CustomAppTheme.appTheme,
+      routerDelegate: AppRoutes.router.routerDelegate,
+      routeInformationParser: AppRoutes.router.routeInformationParser,
+      routeInformationProvider: AppRoutes.router.routeInformationProvider,
     );
   }
 }
